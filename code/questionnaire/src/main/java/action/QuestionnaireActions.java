@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import model.Questionnaire;
+import model.User;
 import service.QuestionnaireService;
 
 public class QuestionnaireActions extends BaseAction{
@@ -108,10 +109,16 @@ public class QuestionnaireActions extends BaseAction{
 		return "updateStatus";
 	}
 	
-	public String delete() throws Exception {
+	public String delete1() throws Exception {
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		quesService.deleteQuestionnaire(ques);
-		return "delete";
+		return "delete1";
+	}
+	
+	public String delete2() throws Exception {
+		Questionnaire ques = quesService.getQuestionnaireById(id);
+		quesService.deleteQuestionnaire(ques);
+		return "delete2";
 	}
 	
 	public String all() throws Exception {
@@ -126,9 +133,11 @@ public class QuestionnaireActions extends BaseAction{
 		return "search";
 	}
 	
-	public String my() throws Exception{
+	public String My() throws Exception{
+		User user = (User)session().getAttribute("user");
+		int userid = user.getId();
 		List<Questionnaire> Questionnaires = quesService.getQuestionnaireByUserId(userid);
 		request().setAttribute("MyQuess", Questionnaires);
-		return "my";
+		return "My";
 	}
 }

@@ -27,9 +27,10 @@
 			<result name="add">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="updateStatus">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="search">/questionnaire/jsp/admin_ques.jsp</result>
-			<result name="delete">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="delete1">/questionnaire/jsp/user_myQuestionnaire.jsp</result>
+			<result name="delete2">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="all">/questionnaire/jsp/admin_ques.jsp</result>
-			<result name="my">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="My">/questionnaire/jsp/user_myQuestionnaire.jsp</result>
 		</action> 
 
 		<!-- Jump -->
@@ -43,9 +44,6 @@
 		</action>
 		<action name="HelpContact">
 			<result>/questionnaire/jsp/user_helpContact.jsp</result>
-		</action>
-		<action name="MyQuestionnaire">
-			<result>/questionnaire/jsp/user_myQuestionnaire.jsp</result>
 		</action>
 		<action name="ReleaseQuestionnaire">
 			<result>/questionnaire/jsp/user_releaseQuestionnaire.jsp</result>
