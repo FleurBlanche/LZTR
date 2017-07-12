@@ -1,3 +1,4 @@
+
 // Sets the min-height of #page-wrapper to window size
 $(function() {
     $(window).bind("load resize", function() {

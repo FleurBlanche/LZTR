@@ -37,9 +37,9 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					<li><a href="#" class="active"><i 
-							class="fa fa-user fa-fw"></i> 用户管理</a></li>
+							class="fa fa-user fa-fw"></i>用户管理</a></li>
 					<li><a href="allQuestionnaire"><i
-							class="fa fa-book fa-fw"></i> 问卷管理</a></li>
+							class="fa fa-book fa-fw"></i>问卷管理</a></li>
 					<li><a href="FrontPage"><i 
 							class="fa fa-university fa-fw"></i> 首页</a></li>
 					<li><a href="logoutPro"><i 
@@ -71,7 +71,6 @@
 											<th>User Name</th>
 											<th>Age</th>
 											<th>Sex</th>
-											<th>Job</th>
 											<th>City</th>
 											<th>Country</th>
 											<th>Email</th>
@@ -92,7 +91,6 @@
 											<td><%=user.getUsername()%></td>
 											<td><%=user.getAge()%></td>
 											<td><%=user.getSex()%></td>
-											<td><%=user.getJob()%></td>
 											<td><%=user.getCity()%></td>
 											<td><%=user.getCountry()%></td>
 											<td><%=user.getEmail()%></td>
@@ -111,14 +109,13 @@
 													data-username="<%=user.getUsername()%>"
 													data-age="<%=user.getAge()%>"
 													data-sex="<%=user.getSex()%>"
-													data-job="<%=user.getJob()%>"
 													data-city="<%=user.getCity()%>"
 													data-country="<%=user.getCountry()%>"
 													data-email="<%=user.getEmail()%>"
-													data-mobile="<%=user.getMobile()%>"
-													data-qq="<%=user.getQq()%>"
-													data-wechat="<%=user.getWechat()%>"
-													data-role="<%=user.getRole()%>"
+													data-mobile="<%=user.getMobile() %>"
+													data-qq="<%=user.getQq() %>"
+													data-wechat="<%=user.getWechat() %>"
+													data-role="<%=user.getRole() %>"
 													>
 													<i class="fa fa-edit"></i>
 												</button>
@@ -158,52 +155,67 @@
 						<div class="col-lg-12">
 							<form role="form">
 								<div class="form-group">
-									<label>ID</label> <input class="form-control" name="id" readonly=true>
+									<!--<label>Status</label> 
+									 <select class="form-control" name = "status">
+										<option>unp</option>
+										<option>pub</option>
+										<option>end</option>
+										<option>ban</option>
+									</select> -->
+	  <table>
+	  <tr>
+        <td colspan="3" name="id">ID</td>
+        <td><%="data-id" %></td>
+      </tr>
+      <tr>
+        <td colspan="3">Username</td>
+        <td><input type="text" name="username" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Age</td>
+        <td><input type="text" name="age"></td>
+      </tr>
+      <tr>
+        <td colspan="3">Sex</td>
+        <td><input type="text" name="sex" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">City</td>
+        <td><input type="text" name="city" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Country</td>
+        <td><input type="text" name="country" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Email</td>
+        <td><input type="text" name="email" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Mobile</td>
+        <td><input type="text" name="mobile" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Qq</td>
+        <td><input type="text" name="qq" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Wechat</td>
+        <td><input type="text" name="wechat" ></td>
+      </tr>
+      <tr>
+        <td colspan="3">Role</td>
+     	<td> 
+			<select class="form-control" id="role">
+				<option>admin</option>
+				<option>user</option>
+			</select>
+		</td>
+      </tr>
+      </table>
+      
 								</div>
-								<div class="form-group">
-									<label>Username</label> <input class="form-control" name="username">
-								</div>
-								<div class="form-group">
-									<label>Age</label> <input class="form-control" name="age">
-								</div>
-								<div class="form-group">
-									<label>Sex</label> <input class="form-control" name="sex">
-								</div>
-								<div class="form-group">
-									<label>Job</label>
-									<select class="form-control" name = "job">
-											<option>teacher</option>
-											<option>student</option>
-											<option>IT</option>
-										</select>
-								</div>
-								<div class="form-group">
-									<label>City</label> <input class="form-control" name="city">
-								</div>
-								<div class="form-group">
-									<label>Country</label> <input class="form-control" name="country">
-								</div>
-								<div class="form-group">
-									<label>Email</label> <input class="form-control" name="email">
-								</div>
-								<div class="form-group">
-									<label>Mobile</label> <input class="form-control" name="mobile">
-								</div>
-								<div class="form-group">
-									<label>QQ</label> <input class="form-control" name="qq">
-								</div>
-								<div class="form-group">
-									<label>WeChat</label> <input class="form-control" name="wechat">
-								</div>
-								
-								<div class="form-group">
-									<label>Role</label> 
-										<select class="form-control" name = "role">
-											<option>admin</option>
-											<option>user</option>
-										</select>
-								</div>
-	  						</form>
+							</form>
 						</div>
 					</div>
 				</div>

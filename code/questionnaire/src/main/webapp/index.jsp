@@ -1,8 +1,8 @@
 <html>
 <body>
-<head>External Jump Page</head>
+<h2>Hello World!</h2>
 <%
-response.sendRedirect("loginPage");
+	response.sendRedirect("loginPage");
 %>
 </body>
 </html>

@@ -79,4 +79,5 @@ public class QuestionnaireDaoImpl extends HibernateDaoSupport implements Questio
 				.find("from Questionnaire as q where q.title LIKE ?",'%'+condi+'%');
 		return quess;
 	}
+
 }

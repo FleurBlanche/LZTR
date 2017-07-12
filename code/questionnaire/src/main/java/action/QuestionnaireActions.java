@@ -23,22 +23,20 @@ public class QuestionnaireActions extends BaseAction{
 	private int isPublic;    	/* 1(default) or 0 */
 	private Date releaseTime;
 	private Date endTime;
-	private String content;
-	
 	private String condi;
-	
-	public void setCondi(String condi){
-		this.condi = condi;
-	}
-	public String getCondi(){
-		return this.condi;
-	}
+	private String content;
 	
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getCondi() {
+		return condi;
+	}
+	public void setCondi(String condi) {
+		this.condi = condi;
 	}
 	public int getId() {
 		return id;
@@ -101,8 +99,10 @@ public class QuestionnaireActions extends BaseAction{
 		if(id!=0){
 			Questionnaire ques = quesService.getQuestionnaireById(id);
 			QuestionnaireQuestions quescontent = quesService.getQuestionnaireQuestionsById(id);
+			ques.setTitle(title);
 			quescontent.setContent(content);
 			quesService.updateQuestionnaire(quescontent, ques);
+			response().getWriter().write("success");
 			return null;
 		}
 		if(status==null) status = "unp";
@@ -111,52 +111,31 @@ public class QuestionnaireActions extends BaseAction{
 		QuestionnaireQuestions quescontent = new QuestionnaireQuestions(content);
 		System.out.println(content);
 		quesService.addQuestionnaire(quescontent, ques);
+		response().getWriter().write("success");
 		return null;
 	}
+	
+	public String updateStatus() throws Exception {
+		Questionnaire ques = quesService.getQuestionnaireById(id);
+		ques.setStatus(status);
+		quesService.updateQuestionnaire(ques);
+		return "updateStatus";
+	}
+	
 	
 	/**
 	 * Use appService to update a questionnaire,including its basic information and content
 	 * @return
 	 */
-	public String update(){
+	public String update() throws Exception {
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		ques.setEndTime(endTime);
 		ques.setIsPublic(isPublic);
 		ques.setReleaseTime(releaseTime);
 		ques.setStatus(status);
 		ques.setTitle(title);
-
-		QuestionnaireQuestions quescontent = quesService.getQuestionnaireQuestionsById(id);
-		quescontent.setContent(content);
-		quesService.updateQuestionnaire(quescontent, ques);
-		return null;
-	}
-	
-	/**
-	 * Use appService to update a questionnaire,including its basic information and content
-	 * @return
-	 */
-	public String update1(){
-		Questionnaire ques = quesService.getQuestionnaireById(id);
-		ques.setEndTime(endTime);
-		ques.setIsPublic(isPublic);
-		ques.setReleaseTime(releaseTime);
-		ques.setStatus(status);
-		ques.setTitle(title);
-		quesService.updateQ(ques);
-		
-		return "update1";
-	}
-	
-	/**
-	 * Use appService to delete a questionnaire,including its basic information and content
-	 * @return
-	 */
-	public String delete(){
-		Questionnaire ques = quesService.getQuestionnaireById(id);
-		QuestionnaireQuestions quescontent = quesService.getQuestionnaireQuestionsById(id);
-		quesService.deleteQuestionnaire(quescontent, ques);
-		return null;
+		quesService.updateQuestionnaire(ques);
+		return "update";
 	}
 	
 	/**
@@ -170,10 +149,6 @@ public class QuestionnaireActions extends BaseAction{
 		return "delete1";
 	}
 	
-	/**
-	 * Use appService to delete a questionnaire,including its basic information and content
-	 * @return
-	 */
 	public String delete2(){
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		QuestionnaireQuestions quescontent = quesService.getQuestionnaireQuestionsById(id);
@@ -191,17 +166,24 @@ public class QuestionnaireActions extends BaseAction{
 		QuestionnaireQuestions quescontent = quesService.getQuestionnaireQuestionsById(id);
 		JSONObject questot = new JSONObject(quescontent.getContent());
 		questot.put("id", ques.getId());
+		questot.put("title", ques.getTitle());
 		response().getWriter().print(questot.toString());
 		return null;
+	}
+	
+	public String getInfo() throws IOException{
+		Questionnaire ques = quesService.getQuestionnaireById(id);
+		request().setAttribute("quesinfo", ques);
+		return "getInfo";
 	}
 	
 	/**
 	 * Use appService to get basic information of all questionnaires
 	 * @return
 	 */
-	public String all() throws Exception {
-		List<Questionnaire> Questionnaires = quesService.getAllQuestionnaires();
-		request().setAttribute("Questionnaires", Questionnaires);
+	public String all(){
+		List<Questionnaire> questionnaires = quesService.getAllQuestionnaires();
+		request().setAttribute("Questionnaires", questionnaires);
 		return "all";
 	}
 	
@@ -212,16 +194,12 @@ public class QuestionnaireActions extends BaseAction{
 	}
 	
 	public String My() throws Exception{
-		int user_id = ((User)request().getSession().getAttribute("user")).getId();
-		List<Questionnaire> Questionnaires = quesService.getQuestionnairesByUserid(user_id);
+		User user = (User)session().getAttribute("user");
+		int userid = user.getId();
+		List<Questionnaire> Questionnaires = quesService.getQuestionnaireByUserId(userid);
 		request().setAttribute("MyQuess", Questionnaires);
 		return "My";
 	}
-	
-	public String updateStatus(){
-		Questionnaire ques = quesService.getQuestionnaireById(id);
-		ques.setStatus(status);
-		quesService.updateQ(ques);
-		return "updateStatus";
-	}
 }
+
+

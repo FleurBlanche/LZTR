@@ -80,7 +80,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService{
 	 * @see service.impl.QuestionnaireService#getQuestionnairesByUserid(int)
 	 */
 	@Override
-	public List<Questionnaire> getQuestionnairesByUserid(int userid){
+	public List<Questionnaire> getQuestionnaireByUserId(int userid){
 		return quesDao.getQuestionnairesByUserid(userid);
 	}
 	
@@ -90,7 +90,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService{
 	}
 	
 	@Override
-	public void updateQ(Questionnaire ques){
+	public void updateQuestionnaire(Questionnaire ques) {
 		quesDao.updateQuestionnaire(ques);
 	}
 }

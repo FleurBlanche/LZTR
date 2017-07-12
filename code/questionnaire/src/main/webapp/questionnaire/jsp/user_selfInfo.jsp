@@ -93,6 +93,11 @@ User user = (User) session.getAttribute("user");
         </div>
       </div>
 
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; 2017 LZTR Group.</p>
+      </footer>
+
     </div> <!-- /container -->
 
 

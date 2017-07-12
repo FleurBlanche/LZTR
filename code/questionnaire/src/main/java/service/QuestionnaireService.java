@@ -19,6 +19,8 @@ public interface QuestionnaireService {
 	 * @param ques
 	 */
 	void updateQuestionnaire(QuestionnaireQuestions questions, Questionnaire ques);
+	
+	void updateQuestionnaire(Questionnaire ques);
 
 	/**
 	 * Delete a questionnaire,including its basic information and content
@@ -52,7 +54,7 @@ public interface QuestionnaireService {
 	 * @param userid
 	 * @return
 	 */
-	List<Questionnaire> getQuestionnairesByUserid(int userid);
+	List<Questionnaire> getQuestionnaireByUserId(int userid);
 
 	/**
 	 * Find questionnaires with a given keyword
@@ -60,13 +62,6 @@ public interface QuestionnaireService {
 	 * @return
 	 */
 	List<Questionnaire> findQuestionnaires(String condi);
-	
-	
-	/**
-	 * Update a questionnaire,including its basic information and content added by lxh for debugging
-	 * @param ques
-	 */
-	void updateQ(Questionnaire ques);
 
 }
 

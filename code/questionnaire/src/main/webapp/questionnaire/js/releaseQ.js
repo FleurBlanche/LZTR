@@ -2,6 +2,23 @@ var DELETE_NUM_QUESTION = 0;
 var QUES_ID = 0;
 
 $(function() {	
+	$(".cancel").click(function(e){
+		bootbox.confirm({
+			buttons : {
+				confirm : {
+					label : 'Confirm'
+				},
+				cancel : {
+					label : 'Cancel'
+				}
+			},
+			message : "Sure to Leave? Your changes won't be saved",
+			callback : function(result) {
+				location.href = 'FrontPage';
+			}
+		});
+	});
+	
 	$(".submit").click(function(e) {
 		var form = document.getElementById("form");
 		if(form == null){
@@ -18,7 +35,7 @@ $(function() {
 		var title = $("input[name='title']").val();
 		if(title==null) alert("Title can not be empty");
 		var intro = $("input[name='introduction']").val();
-		result['title'] = title;
+		//result['title'] = title;
 		result['introduction'] = intro;
 		result['questions'] = [];
 		for(var k = 0 ; k < childs.length ; k++ ){
@@ -103,23 +120,20 @@ $(function() {
 		jQuery.ajax({
 			url : 'addQuestionnaire',
 			processData : true,
-			dataType : "json",
+			dataType : "text",
 			data : {
 				title:title,
 				id:QUES_ID,
 				content : JSON.stringify(result)
 			},
 			success : function(data) {
-				console.log(id);
 				bootbox.alert({
 					message : 'success',
 				    callback : function() {
-						location.reload();
+				    	location.href = 'FrontPage';
 					}
 				});
-				
 			}
-			
 		});
 	});
 	
@@ -392,7 +406,6 @@ function addMultiple() {
 };
 
 function modify(result, id){
-	QUES_ID = id;
 	$("input[name='title']").val(result['title']);
 	$("input[name='introduction']").val(result['introduction']);
 	//alert(result[0]['stem']);
@@ -434,3 +447,19 @@ function modify(result, id){
 		}
 	}
 };
+
+
+function update(quesid){
+	QUES_ID = quesid;
+	jQuery.ajax({
+		url : 'getQuestionnaire',  //get content
+		processData : true,
+		dataType : "json",
+		data : {
+			id : QUES_ID
+		},
+		success : function(data) { //把title，id都放在里面
+			modify(data, QUES_ID);
+		}
+	});
+}

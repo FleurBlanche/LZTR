@@ -11,7 +11,7 @@ $(function() {
 		console.log(id,isPublic,status,title,endTime, releaseTime);
 
 		jQuery.ajax({
-			url : 'update1Questionnaire',
+			url : 'updateQuestionnaire',
 			processData : true,
 			dataType : "text",
 			data : {
