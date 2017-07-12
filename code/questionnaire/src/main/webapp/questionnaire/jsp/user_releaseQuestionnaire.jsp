@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="model.Questionnaire"%>
 <!DOCTYPE html>
 <%
 	String path=request.getContextPath();
@@ -22,7 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=path %>/questionnaire/css/justified-nav.css" rel="stylesheet">
-
+	<link href="<%=path %>/questionnaire/css/font-awesome.min.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="<%=path %>/questionnaire/js/ie-emulation-modes-warning.js"></script>
@@ -34,7 +35,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body value="0">
 
     <div class="container">
 
@@ -57,44 +58,49 @@
           </ul>
         </nav>
       </div>
+		
+	</br>
+      <div class="container">
+		<button class="btn btn-default addBlank" type="button" style="floating:right">
+				<i class="fa fa-plus  fa-2x">Blank-filling Question</i>
+		</button>
+		<button class="btn btn-default addSingle"  type="button" style="floating:right">
+				<i class="fa fa-plus  fa-2x">Single Option Question</i>
+		</button>
+		<button class="btn btn-default addMultiple"  type="button" style="floating:right">
+				<i class="fa fa-plus  fa-2x">Multiple Option Question</i>
+		</button>
+		
+		<div class="row">
+			 <label ><font size="5">Title</font></label>
+			 <input type="text" name="title"  class="form-control">
+		</div>
+		<div class="row">
+			 <label  ><font size="5">Introduction</font></label>
+			 <input type="text" name="introduction"  class="form-control">
+		</div>
+		
+		</br>
+		<button class="btn btn-default submit" type="button" style="floating:right">
+				<i class="fa fa-check fa-2x">confirm</i>
+		</button>
+		<button class="btn btn-default modify" type="button" style="floating:right">
+				<i class="fa fa-check fa-2x">modify</i>
+		</button>
+    </div> <!-- /container -->
+    
+    <script src="<%=path %>/questionnaire/js/jquery-1.11.1.min.js"></script>
+    <script src="<%=path %>/questionnaire/js/bootstrap.min.js"></script>
+	<script src="<%=path %>/questionnaire/js/releaseQ.js"></script>
+	<script>
+	<%if(request.getAttribute("quescontent")!=null){%>
+	modify(<%=request.getAttribute("quescontent") %>,<%=((Questionnaire)request.getAttribute("quesinfo")).getId() %>);
+	<%}%>
+	</script>
 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>免费在线问卷调查</h1>
-        <p class="lead">免费，轻松的在线问卷网，欢迎您使用我们的系统来进行问卷调查，希望您能得到对于您工作或者学习有用的信息。</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">马上发布你的问卷！</a></p>
-      </div>
-	  
-	  <div class="jumbotron">
-          <h1>时下热门</h1>
-	  </div>
-	  <!-- 此处代码需要修改，到时候项目基本完成后，需要修改为动态变化的（显示数据库中填写次数最多的前三个仍然开放的问卷） -->
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>大学生作息时间调查</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">填写问卷 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>编程语言使用调查</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">填写问卷 &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>上海交大软件学院学生心理调查问卷</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">填写问卷 &raquo;</a></p>
-        </div>
-      </div>
-
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2017 LZTR Group.</p>
-      </footer>
+      
 
     </div> <!-- /container -->
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<%=path %>/questionnaire/js/ie10-viewport-bug-workaround.js"></script>

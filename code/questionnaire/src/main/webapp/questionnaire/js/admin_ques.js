@@ -45,7 +45,7 @@ $(function() {
 					var dataset = e.currentTarget.dataset;
 					var id = dataset.id;
 					jQuery.ajax({
-						url : 'deleteQuestionnaire',
+						url : 'delete2Questionnaire',
 						processData : true,
 						dataType : "text",
 						data : {

@@ -23,7 +23,7 @@
 		<!-- update, add, updateStatus, search, delete, all, my-->
 		<!-- 没有区分result的跳转，在页面基本完成后修改 -->
 		<action name="*Questionnaire" class="action.QuestionnaireActions" method="{1}">
-			<result name="update">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="update1">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="add">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="updateStatus">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="search">/questionnaire/jsp/admin_ques.jsp</result>

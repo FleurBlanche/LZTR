@@ -79,7 +79,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<a class="btn btn-lg btn-success" href="#" role="button">新建问卷</a>
+					<a class="btn btn-lg btn-success" href="ReleaseQuestionnaire" role="button">新建问卷</a>
 				</div>
 			</div>
 			</br>
@@ -172,7 +172,7 @@
 								</div>
 								<div class="form-group">
 									<label>IsPublic</label>
-									<select class="form-control" id="selectf1" name = "inpublic">
+									<select class="form-control" id="selectf1" name = "ispublic">
 										<option>1</option>
 										<option>0</option>
 									</select>
@@ -226,14 +226,6 @@
 			});
 		});
 	</script>
-	  
-	  
-	  
-
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2017 LZTR Group.</p>
-      </footer>
 
     </div> <!-- /container -->
 
