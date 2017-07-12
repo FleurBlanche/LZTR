@@ -17,3 +17,6 @@ test file
 
 # my own folder for study record and something else
 /lixuhui/*
+
+# ignore project
+.project
